@@ -60,8 +60,9 @@ the `library` function. Note that you only need to **install** packages once, bu
 you need to **load** them each time you relaunch RStudio.
 
 ```{r load-packages, message = FALSE}
-library(dplyr)
-library(ggplot2)
+library(tidyverse)
+#library(dplyr)
+#library(ggplot2)
 library(statsr)
 ```
 
@@ -81,7 +82,8 @@ of each lab.
 To get you started, run the following command to load the data.
 
 ```{r load-abrbuthnot-data}
-data(arbuthnot)
+#data(arbuthnot)
+arbuthnot <- read_csv("arbuthnot.csv")
 ```
 
 To do so, once again, you can 
@@ -153,10 +155,19 @@ names(arbuthnot)
 <li> 1710 </li>
 </ol>
 
+```{r variables-data}
+ncol(arbuthnot)
+```
+
+
 <div id="exercise">
 **Exercise**: What years are included in this dataset? Hint: Take a look at the year 
 variable in the Data Viewer to answer this question.
 </div>
+
+```{r range-year}
+range(arbuthnot$year)
+```
 
 You should see that the data frame contains the columns `year`,  `boys`, and 
 `girls`. At this point, you might notice that many of the commands in R look a 
@@ -207,7 +218,7 @@ variable that comes after me".
 
 ```{r extract-counts-of-girls-born}
 # type your code for the Question 2 here, and Knit
-
+arbuthnot$girls
 ```
 
 Notice that the way R has printed these data is different. When we looked at the
