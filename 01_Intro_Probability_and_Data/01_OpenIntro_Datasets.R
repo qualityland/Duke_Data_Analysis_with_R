@@ -1,4 +1,7 @@
 library(tidyverse)
+# install.packages("devtools")
+library(devtools)
+# install_github("StatsWithR/statsr")
 
 ### Chapter 1.1 Case study: using stents to prevent strokes
 
