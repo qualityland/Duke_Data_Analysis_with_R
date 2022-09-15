@@ -60,9 +60,8 @@ the `library` function. Note that you only need to **install** packages once, bu
 you need to **load** them each time you relaunch RStudio.
 
 ```{r load-packages, message = FALSE}
-library(tidyverse)
-#library(dplyr)
-#library(ggplot2)
+library(dplyr)
+library(ggplot2)
 library(statsr)
 ```
 
@@ -82,8 +81,7 @@ of each lab.
 To get you started, run the following command to load the data.
 
 ```{r load-abrbuthnot-data}
-#data(arbuthnot)
-arbuthnot <- read_csv("arbuthnot.csv")
+data(arbuthnot)
 ```
 
 To do so, once again, you can 
@@ -245,11 +243,10 @@ ggplot(data = arbuthnot, aes(x = year, y = girls)) +
 even better:
 
 ```{r plot-births-vs-year}
-arbuthnot %>% 
-  pivot_longer(!year, names_to = "gender", values_to = "births") %>% 
-  ggplot(aes(year, births, color = gender)) +
-  geom_line()
-
+ggplot(data = arbuthnot) +
+  geom_line(aes(x = year, y = girls), color="red") +
+  geom_line(aes(x = year, y = boys), color="blue") +
+  labs(y="number of baptized girls (red) and boys (blue)")
 ```
 
 Before we review the code for this plot, let's summarize the trends we see in the 
@@ -270,7 +267,7 @@ of the lower right panel of RStudio. Notice that the command above again looks l
 a function, this time with arguments separated by commas. 
 
 - The first argument is always the dataset. 
-- Next, we provide thevariables from the dataset to be assigned to `aes`thetic 
+- Next, we provide the variables from the dataset to be assigned to `aes`thetic 
 elements of the plot, e.g. the x and the y axes. 
 - Finally, we use another layer, separated by a `+` to specify the `geom`etric 
 object for the plot. Since we want to scatterplot, we use `geom_point`.
@@ -411,7 +408,8 @@ but for present day birth records in the United States. Load up the
 present day data with the following command.
 
 ```{r load-present-data}
-present <- read_csv("present.csv")
+#present <- read_csv("present.csv")
+data(present)
 ```
 
 The data are stored in a data frame called `present` which should now be loaded in 

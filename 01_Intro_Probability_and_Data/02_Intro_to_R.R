@@ -1,17 +1,20 @@
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(statsr)
 
-df <- read_csv("01_Intro_Probability_and_Data/arbuthnot.csv")
+data(arbuthnot)
+arbuthnot
+dim(arbuthnot)
 
-df %>% 
-  pivot_longer(!year, names_to = "gender", values_to = "count") %>% 
-  ggplot(aes(year, count, color = gender)) +
-  geom_line()
+arbuthnot <- arbuthnot %>% 
+  mutate(total=boys+girls)
 
-dim(df)
+ggplot(arbuthnot, aes(x=year, y=total)) +
+  geom_line() +
+  geom_point()
 
-
-present <- read_csv("data/present.csv")
-
+#present <- read_csv("data/present.csv")
+data(present)
 dim(present)
 
 range(present$year)
