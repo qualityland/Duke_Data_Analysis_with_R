@@ -6,12 +6,14 @@ data(arbuthnot)
 arbuthnot
 dim(arbuthnot)
 
+# add total births
 arbuthnot <- arbuthnot %>% 
   mutate(total=boys+girls)
 
 ggplot(arbuthnot, aes(x=year, y=total)) +
   geom_line() +
   geom_point()
+
 
 #present <- read_csv("data/present.csv")
 data(present)
